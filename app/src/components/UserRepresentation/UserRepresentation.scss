@@ -1,0 +1,32 @@
+.ds-user {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  .ds-user-initial {
+    border-radius: 50%;
+    min-width: 24px;
+    height: 24px;
+    background-color: var(--mid-kapptivgreen);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-weight: 700;
+    color: var(--color-main);
+    margin: auto 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: geist-bold;
+  }
+  .ds-user-info {
+    display: flex;
+    flex-direction: column;
+    .ds-user-name {
+      font-size: 0.825rem;
+    }
+    .ds-user-mail {
+      color: var(--text-third);
+      font-size: 0.6875rem;
+    }
+  }
+}
