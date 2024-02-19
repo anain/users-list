@@ -1,0 +1,47 @@
+.ds-filter {
+  width: max-content;
+  box-sizing: border-box;
+  font-family: geist-medium;
+
+  .ds-filter__toggle {
+    width: 100%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    font-family: geist-medium;
+  }
+  .ds-filter__options {
+    border: var(--border-primary) 1px solid;
+    border-top: 0;
+    width: 100%;
+    box-sizing: border-box;
+
+    .ds-filter__category {
+      font-size: 0.75rem;
+      font-weight: 500;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .ds-filter__category-input {
+        border: 1px solid;
+        border-image-source: linear-gradient(360deg, #c1bcbc 0%, #888686 100%);
+        box-shadow: 0px 0px 4px 0px #0000004d inset;
+        width: 12px;
+        height: 12px;
+        border-radius: 53px;
+        border: 1px;
+      }
+    }
+    .ds-filter__category-wrapper {
+      border-top: var(--border-primary) 1px solid;
+      max-width: 100%;
+      padding: 5px;
+      margin: 0;
+
+      .ds-filter__category {
+        font-size: 0.75rem;
+        max-width: 100%;
+        font-family: geist-medium;
+      }
+    }
+  }
+}
