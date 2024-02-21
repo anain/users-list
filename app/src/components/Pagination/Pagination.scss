@@ -1,0 +1,27 @@
+.ds-pagination {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  flex-wrap: wrap;
+  .ds-pagination__page {
+    border-radius: 0;
+    min-width: 32px;
+    font-size: 0.68rem;
+    &.--active-page {
+      color: var(--text-primary);
+    }
+    &:not(.--active-page) {
+      color: var(--text-secondary);
+    }
+  }
+  .ds-pagination__arrow {
+    &.--previous {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &.--next {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}

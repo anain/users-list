@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="page">
       <h2>Users ({usersData.length})</h2>
-      <UsersList users={usersData} />
+      <UsersList users={usersData} usersPerPage={15} />
     </div>
   );
 }

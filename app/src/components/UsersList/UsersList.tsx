@@ -11,12 +11,18 @@ import "./UsersList.scss";
 
 type Props = {
   users: UserData[];
+  usersPerPage?: number;
 };
 
 const HEADERS = ["User", "Teams", "Access", "Last Login"];
 
-const UsersList = ({ users }: Props) => {
+const UsersList = ({ users, usersPerPage }: Props) => {
   const [filteredUsers, setFilteredUsers] = useState<UserData[]>(users);
+  const [displayedUsers, setDisplayedUsers] = useState<UserData[] | undefined>(
+    undefined
+  );
+  const [activePageIndex, setActivePageIndex] = useState<number>(0);
+  const [pageNumber, setPageNumber] = useState<number>(1);
 
   const teams = TEAMS;
 
@@ -34,6 +40,26 @@ const UsersList = ({ users }: Props) => {
       )
     );
   };
+
+  useEffect(() => {
+    if (!usersPerPage) return;
+    setPageNumber(Math.ceil(filteredUsers.length / usersPerPage));
+  }, [filteredUsers]);
+
+  useEffect(() => {
+    if (!usersPerPage) return;
+    setDisplayedUsers(
+      filteredUsers.slice(
+        activePageIndex * usersPerPage,
+        activePageIndex * usersPerPage + usersPerPage
+      )
+    );
+  }, [filteredUsers, activePageIndex]);
+
+  useEffect(() => {
+    if (!usersPerPage) return;
+    if (activePageIndex > pageNumber - 1) setActivePageIndex(pageNumber - 1);
+  }, [pageNumber]);
 
   return (
     <div className="users-list">
@@ -53,11 +79,19 @@ const UsersList = ({ users }: Props) => {
           </tr>
         </thead>
         <tbody>
-          {filteredUsers?.map((user) => (
+          {displayedUsers?.map((user) => (
             <UserRow {...user} key={`${user.id}${user.name}`} />
           ))}
         </tbody>
       </table>
+      {usersPerPage && (
+        <Pagination
+          pageNumber={pageNumber}
+          activePage={activePageIndex}
+          onPageClick={(page) => setActivePageIndex(page)}
+          className="users-list-table__pagination"
+        />
+      )}
     </div>
   );
 };
